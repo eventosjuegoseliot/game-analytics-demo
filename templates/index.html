@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Analytics Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: #eee;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #f39c12;
+        }
+        .list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #1f1f1f;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card div {
+            padding: 15px;
+        }
+        .card h2 {
+            margin: 0 0 10px;
+            font-size: 1.25rem;
+            color: #f39c12;
+        }
+        .card p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<h1>🎮 Top Juegos Hoy</h1>
+
+<div class="list">
+    {% for game in games %}
+    <div class="card">
+        <img src="{{ game.logo }}">
+        <div>
+            <h2>#{{ game.rank }} - {{ game.name }}</h2>
+            <p><b>Empresa:</b> {{ game.company }}</p>
+            <p><b>Categoría:</b> {{ game.category }}</p>
+            <p><b>Precio:</b> {{ game.price }}</p>
+            <p><b>Usuarios:</b> {{ game.users }}</p>
+            <p><b>Reviews:</b> {{ game.reviews }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
